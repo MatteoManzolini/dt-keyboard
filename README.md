@@ -1,4 +1,4 @@
-# DTKeyboard -- Dynamic Tonality Keboard
+# DTKeyboard - Dynamic Tonality Keyboard
 
 **Version 1.0.0**
 
