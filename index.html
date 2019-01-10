@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>DT Keyboard</title>
+  <link rel="icon" href="./img/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+  <script src='https://use.typekit.net/amr4rzn.js'></script>
+  <script>
+  	var w = window.innerWidth;
+  	if (navigator.userAgent.match(/Android/i)
+ 		|| navigator.userAgent.match(/webOS/i)
+ 		|| navigator.userAgent.match(/iPhone/i)
+ 		|| navigator.userAgent.match(/iPad/i)
+		|| navigator.userAgent.match(/iPod/i)
+ 		|| navigator.userAgent.match(/BlackBerry/i)
+ 		|| navigator.userAgent.match(/Windows Phone/i)) {
+  		console.log("mobile version")
+  		window.location.href = "./mobile_index.html";
+  	}
+  </script>
+
+</head>
+
+<body>
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCkcmlJEtKOrm3mtidLNOiiMtruCFDUo8k",
+    authDomain: "dt-keyboard-d178c.firebaseapp.com",
+    databaseURL: "https://dt-keyboard-d178c.firebaseio.com",
+    projectId: "dt-keyboard-d178c",
+    storageBucket: "dt-keyboard-d178c.appspot.com",
+    messagingSenderId: "650064927425"
+  };
+  firebase.initializeApp(config);
+  </script>
+
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/dseg14" type="text/css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300">
+
+  <script src='https://surikov.github.io/webaudiofont/npm/dist/WebAudioFontPlayer.js'></script>
+  <script src='https://surikov.github.io/webaudiofontdata/sound/0000_Chaos_sf2_file.js'></script>
+  <script src='https://surikov.github.io/webaudiofontdata/sound/0160_Aspirin_sf2_file.js'></script>
+  <script src='https://surikov.github.io/webaudiofontdata/sound/0270_Aspirin_sf2_file.js'></script>
+  <script src='https://surikov.github.io/webaudiofontdata/sound/0440_Aspirin_sf2_file.js'></script>
+  <script src='https://surikov.github.io/webaudiofontdata/sound/0670_Aspirin_sf2_file.js'></script>
+
+  <div id="bigbox" class="fade-in">
+    <div class="bracket"></div>
+    <div class="bracket"></div>
+    <div id="upperbar">  
+
+    <div style="transform: translate(-5px, 15px);">
+      <div style="display: inline-flex">	
+        <div id="tonality"></div>
+        <div id="tonalities-table">
+          <div class="tonalities-container" style="margin-top: 10px;">
+            <div id="A♭+" class="tonalita A♭" tonality-row="0" tonality-col="0">A♭+</div>
+            <div id="E♭+" class="tonalita E♭+" tonality-row="0" tonality-col="1">E♭+</div>
+            <div id="B♭+" class="tonalita B♭+" tonality-row="0" tonality-col="2">B♭+</div>
+            <div id="F+" class="tonalita F+" tonality-row="0" tonality-col="3">F+</div>
+            <div id="C+" class="tonalita C+" tonality-row="0" tonality-col="4">C+</div>
+            <div id="G+" class="tonalita G+" tonality-row="0" tonality-col="5">G+</div>
+            <div id="D+" class="tonalita D+" tonality-row="0" tonality-col="6">D+</div>
+            <div id="A+" class="tonalita A+" tonality-row="0" tonality-col="7">A+</div>
+            <div id="E+" class="tonalita E+" tonality-row="0" tonality-col="8">E+</div>
+            <div id="B+" class="tonalita B+" tonality-row="0" tonality-col="9">B+</div>
+            <div id="F#+" class="tonalita F#+" tonality-row="0" tonality-col="10">F#+</div>
+            <div id="C#+" class="tonalita C#+" tonality-row="0" tonality-col="11" style="border-top-right-radius: 5px;">C#+</div>
+          </div>
+          <div class="tonalities-container">
+            <div id="F-" class="tonalita F-" tonality-row="1" tonality-col="0">F-</div>
+            <div id="C-" class="tonalita C-" tonality-row="1" tonality-col="1">C-</div>
+            <div id="G-" class="tonalita G-" tonality-row="1" tonality-col="2">G-</div>
+            <div id="D-" class="tonalita D-" tonality-row="1" tonality-col="3">D-</div>
+            <div id="A-" class="tonalita A-" tonality-row="1" tonality-col="4">A-</div>
+            <div id="E-" class="tonalita E-" tonality-row="1" tonality-col="5">E-</div>
+            <div id="B-" class="tonalita B-" tonality-row="1" tonality-col="6">B-</div>
+            <div id="F#-" class="tonalita F#-" tonality-row="1" tonality-col="7">F#-</div>
+            <div id="C#-" class="tonalita C#-" tonality-row="1" tonality-col="8">C#-</div>
+            <div id="G#-" class="tonalita G#-" tonality-row="1" tonality-col="9">G#-</div>
+            <div id="D#-" class="tonalita D#-" tonality-row="1" tonality-col="10">D#-</div>
+            <div id="A#-" class="tonalita A#-" tonality-row="1" tonality-col="11" style="border-bottom-right-radius: 5px;">A#-</div>            
+          </div>
+        </div>  
+      </div>
+
+      <div style="transform: translate(10px, 5px);">
+      <div style="display: inline-flex;">
+        <div class="custom-select custom-select-instr" placeholder="Piano"> 
+          <select id="instruments" onchange="change()">
+              <option class="instr" value="Piano"> Piano </option>
+              <option class="instr" value="Organ"> Organ </option>  
+              <option class="instr" value="Guitar"> Guitar </option>
+              <option class="instr" value="Violin"> Violin </option>
+              <option class="instr" value="Sax"> Sax </option>
+          </select>
+        </div> <!--menu a tendina--->  
+
+        <div class="custom-select custom-select-modal" placeholder="Ionian">
+          <select id="modalScales" class="modalScales" onchange="changeModalScale()">
+              <option class="modScale" id="Ionian" value="Ionian"> Ionian </option>
+              <option class="modScale" value="Dorian"> Dorian </option>  
+              <option class="modScale" value="Phrygian"> Phrygian </option>
+              <option class="modScale" value="Lydian"> Lydian </option>
+              <option class="modScale" value="Mixolydian"> Mixolydian </option>
+              <option class="modScale" value="Aeolian"> Aeolian </option>
+              <option class="modScale" value="Locrian"> Locrian </option>
+              <option class="modScale" value="Blues"> Blues </option>
+              <option class="modScale" value="Pentatonic"> Pentatonic </option>
+          </select>
+        </div> <!--menu a tendina---> 
+
+        <div class="custom-select custom-select-minor" placeholder="Natural"> 
+          <select id="minorScales" onchange="changeMinorScale()">
+              <option class="minScale" value="Natural"> Natural </option>
+              <option class="minScale" value="Harmonic"> Harmonic </option>  
+              <option class="minScale" value="Melodic"> Melodic </option>
+              <option class="minScale" value="Blues"> Blues </option>
+              <option class="minScale" value="Pentatonic"> Pentatonic </option>
+          </select>
+        </div> <!--menu a tendina---> 
+
+        <div id="roomSelectorButton" class="button" onclick="openPopupRoom()">Room Selector</div>
+        <div class="open_button button" onclick="openPopupTutorial()">Tutorial</div></div></div> 
+        </div> 
+
+    <div id="effects" style="background-image: url('./img/knob_mask.png'); background-position: 13px 2px">
+      <div class="sub-bar-knob">
+        <div class="knobcontainer">  
+          <img src="./img/silverknob.png" class="knob" knob_number="0" alt="silverknob" id="silverknob0">
+          <div id = "knobLabel0"></div>
+        </div>
+        <div class="knobcontainer">  
+          <img src="./img/silverknob.png" class="knob knob0" knob_number="1" alt="silverknob" id="silverknob1">
+          <div id = "knobLabel1"></div>
+        </div>
+      </div>
+      <div class="sub-bar-knob">
+        <div class="knobcontainer">  
+          <img src="./img/silverknob.png" class="knob" knob_number="2" alt="silverknob" id="silverknob2">
+          <div id = "knobLabel2"></div>
+        </div>
+        <div class="knobcontainer">  
+          <img src="./img/silverknob.png" class="knob knob0" knob_number="3" alt="silverknob" id="silverknob3">
+          <div id = "knobLabel3"></div>
+        </div>
+      </div>
+    </div>  
+
+    <div id="equalizer">
+      <section></section>
+    <section>
+      <input class="range" type='range' range-number ="0" min='-12' value='0' max='12' step='.1' />
+      <input class="range" type='range' range-number ="1" min='-12' value='0' max='12' step='.1' />
+      <input class="range" type='range' range-number ="2" min='-12' value='0' max='12' step='.1' />
+      <input class="range" type='range' range-number ="3" min='-12' value='0' max='12' step='.1' />
+      <input class="range" type='range' range-number ="4" min='-12' value='0' max='12' step='.1' />
+      <input class="range" type='range' range-number ="5" min='-12' value='0' max='12' step='.1' />
+      <input class="range" type='range' range-number ="6" min='-12' value='0' max='12' step='.1' />
+      <input class="range" type='range' range-number ="7" min='-12' value='0' max='12' step='.1' />
+      <input class="range" type='range' range-number ="8" min='-12' value='0' max='12' step='.1' />
+      <input class="range" type='range' range-number ="9" min='-12' value='0' max='12' step='.1' />
+    </section>
+    </div>
+  </div><!--end upperbar-->
+
+<div id="lowerbar">
+
+        <div id="midibox">
+        <div id="midiled" class="led">
+          <div id="midiled-hilight" class="hilight"> 
+            <div id="midilabel">MIDI IN</div>
+          </div>
+        </div>
+
+        <div id="switchbox">
+          <div class="switchcontainer" style="transform: translate(170px, -10px);">
+            <div id="DynKeySwitch" class="switch switch0">
+              <input type="radio" name="switch0" id="switch0-off">
+              <input type="radio" name="switch0" id="switch0-on">
+              <label for="switch0-off" style="width: 100px; transform: translate(-5px,0px); font-size:80%; font-weight: bold;">DYNAMIC TONALITY</label>
+              <label for="switch0-on"></label>
+              <span class="toggle"></span>
+            </div>
+          </div>
+
+         <div class="switchcontainer" style="transform: translate(170px, 35px);">
+            <div id="ScaleKeySwitch" class="switch switch1">
+              <input type="radio" name="switch1" id="switch1-off">
+              <input type="radio" name="switch1" id="switch1-on">
+              <label for="switch1-off" style="width: 100px; transform: translate(-7.5px,0px); font-size:80%; font-weight: bold;">SCALE FUNCTION</label>
+              <label for="switch1-on"></label>
+              <span class="toggle"></span>
+            </div>
+          </div>
+        </div></div>
+
+  <div id="room-text" style="">ROOM NUMBER</div>
+  <div id="roomNumber" class="room-number" style="">0</div>
+        <div class="switchcontainer" style="transform: translate(470px,12px);">
+            <div id="DBPlaying" class="switch switch2">
+              <input type="radio" name="switch2" id="switch2-off" style="">
+              <input type="radio" name="switch2" id="switch2-on" style="">
+              <label for="switch2-off" style="width: 100px; transform: translate(-10px,0px); font-size:80%; font-weight: bold;">ENABLE DB PLAYING</label>
+              <label for="switch2-on"></label>
+              <span class="toggle"></span>
+            </div> 
+          </div>
+
+<div class="mediaplayer" id="mediaPlayer" style="">
+	<audio id="audioPlayer" src="./tracks/01 - Autumn Leaves.mp3"></audio>
+
+	<div class="controls">
+		<div class="title lcd" id="songTitleLabel">
+			DT Keyboard - Audio Player
+		</div>
+    <div style="display: inline-flex;">
+		<div class="buttons">
+			<button id="backItem" class="back">
+				<i class="fa fa-backward"></i>
+			</button>
+			<button id="playState" class="playstate">
+				<i class="fa fa-play"></i>
+				<i class="fa fa-pause"></i>
+			</button>
+			<button id="stopItem" class="stop">
+				<i class="fa fa-stop"></i>
+			</button>
+			<button id="nextItem" class="next">
+				<i class="fa fa-forward"></i>
+			</button>
+		</div>
+    
+		<div class="subControls">
+			<span class="duration" id="currentDuration">00:00</span>
+			<input class="volumeSlider" type="range" id="volumeSlider" min="0" max="1" step="0.01"/>
+		</div></div>
+	</div>
+
+
+<div class="metrContainer">
+ <div class="metronome-container">
+  <img src="./img/metronome.png" alt="metronome-img" id="metronome-img">
+    <div class="metrControls">
+ 
+      <input type="text" value="60" class="bpm-input" />
+
+      <button class="play-btn metronome-btn">Play</button>
+      <button class="tap-btn metronome-btn">Tap</button>
+    </div>
+  </div>
+</div>
+
+
+</div>
+</div> <!--end lowerbar-->
+    
+  <ul id="keyboard">
+    <li class="key white f" data-key="0"><div id="tasto0" class="currentScale white-point"></div></li>
+    <li class="key black fs" data-key="1"><div id="tasto1" class="currentScale"></div></li> 
+    <li class="key white g" data-key="2"><div id="tasto2" class="currentScale white-point"></div></li>
+    <li class="key black gs" data-key="3"><div id="tasto3" class="currentScale"></div></li>
+    <li class="key white a" data-key="4"><div id="tasto4" class="currentScale white-point"></div></li>
+    <li class="key black as" data-key="5"><div id="tasto5" class="currentScale"></div></li>
+    <li class="key white b" data-key="6"><div id="tasto6" class="currentScale white-point"></div></li>
+    
+    <li class="key white c" data-key="7"><div id="tasto7" class="currentScale white-point"></div></li>
+    <li class="key black cs" data-key="8"><div id="tasto8" class="currentScale"></div></li>
+    <li class="key white d" data-key="9"><div id="tasto9" class="currentScale white-point"></div></li>
+    <li class="key black ds" data-key="10"><div id="tasto10" class="currentScale"></div></li>
+    <li class="key white e" data-key="11"><div id="tasto11" class="currentScale white-point"></div></li>
+    <li class="key white f" data-key="12"><div id="tasto12" class="currentScale white-point"></div></li>
+    <li class="key black fs" data-key="13"><div id="tasto13" class="currentScale"></div></li>
+    <li class="key white g" data-key="14"><div id="tasto14" class="currentScale white-point"></div></li>
+    <li class="key black gs" data-key="15"><div id="tasto15" class="currentScale"></div></li>
+    <li class="key white a" data-key="16"><div id="tasto16" class="currentScale white-point"></div></li>
+    <li class="key black as" data-key="17"><div id="tasto17" class="currentScale"></div></li>
+    <li class="key white b" data-key="18"><div id="tasto18" class="currentScale white-point"></div></li>
+    
+    <li class="white c key" data-key="19"><div id="tasto19" class="currentScale white-point"></div></li>
+    <li class="black cs key" data-key="20"><div id="tasto20" class="currentScale"></div></li>
+    <li class="white d key" data-key="21"><div id="tasto21" class="currentScale white-point"></div></li>
+    <li class="black ds key" data-key="22"><div id="tasto22" class="currentScale"></div></li>
+    <li class="white e key" data-key="23"><div id="tasto23" class="currentScale white-point"></div></li>
+    <li class="white f key" data-key="24"><div id="tasto24" class="currentScale white-point"></div></li>
+    <li class="black fs key" data-key="25"><div id="tasto25" class="currentScale"></div></li>
+    <li class="white g key" data-key="26"><div id="tasto26" class="currentScale white-point"></div></li>
+    <li class="black gs key" data-key="27"><div id="tasto27" class="currentScale"></div></li>
+    <li class="white a key" data-key="28"><div id="tasto28" class="currentScale white-point"></div></li>
+    <li class="black as key" data-key="29"><div id="tasto29" class="currentScale"></div></li>
+    <li class="white b key" data-key="30"><div id="tasto30" class="currentScale white-point"></div></li>
+    
+    <li class="key white c" data-key="31"><div id="tasto31" class="currentScale white-point"></div></li>
+    <li class="key black cs" data-key="32"><div id="tasto32" class="currentScale"></div></li>
+    <li class="key white d" data-key="33"><div id="tasto33" class="currentScale white-point"></div></li>
+    <li class="key black ds" data-key="34"><div id="tasto34" class="currentScale"></div></li>
+    <li class="key white e" data-key="35"><div id="tasto35" class="currentScale white-point"></div></li>
+    <li class="key white f" data-key="36"><div id="tasto36" class="currentScale white-point"></div></li>
+    <li class="key black fs" data-key="37"><div id="tasto37" class="currentScale"></div></li>
+    <li class="key white g" data-key="38"><div id="tasto38" class="currentScale white-point"></div></li>
+    <li class="key black gs" data-key="39"><div id="tasto39" class="currentScale"></div></li>
+    <li class="key white a" data-key="40"><div id="tasto40" class="currentScale white-point"></div></li>
+    <li class="key black as" data-key="41"><div id="tasto41" class="currentScale"></div></li>
+    <li class="key white b" data-key="42"><div id="tasto42" class="currentScale white-point"></div></li>
+    
+    <li class="key white c" data-key="43"><div id="tasto43" class="currentScale white-point"></div></li>
+    <li class="key black cs" data-key="44"><div id="tasto44" class="currentScale"></div></li>
+    <li class="key white d" data-key="45"><div id="tasto45" class="currentScale white-point"></div></li>
+    <li class="key black ds" data-key="46"><div id="tasto46" class="currentScale"></div></li>
+    <li class="key white e" data-key="47"><div id="tasto47" class="currentScale white-point"></div></li>
+    </ul>
+ </div>
+
+<div id="roomForm">
+  <div class="container">
+    <div class="close" aria-label"Close Popup"></div>
+    <div class="content">
+      <div class="popup_body">
+    <div class="popup_font" style="padding-top: 50px; font-size: 35px; font-weight: 1000">Let's have a jam session!</div>
+    <div class="popup_font" style="font-size: 25px; font-weight: 600">Select a room or create your own one</div>
+    <div class="popup_font" style="font-size: 20px; font-weight: 400">Select Room:</div>
+    <div style="margin:10px; margin-top: 30px; display: inline-flex;">
+    <div class="custom-select-room"> 
+      <select id="roomList" class="select" onchange="selectRoom()">
+      </select>
+    </div>
+    <div style="display: inline-flex; transform: translate(37px, 5px); font-weight: 300;">DELETE ROOM
+    <div id="deleteRoomBtn" style="" onclick="deleteRoom()">
+      <i class="fas fa-trash-alt"></i>
+    </div></div></div>
+    <form action="#">
+    <input id="roomName" placeholder="Room Name" type="text" 
+        value="Base Room" class="inputSpace" disabled required/>
+      <input id="roomPassword" placeholder="Insert Password" type="text" 
+        value="No password required!!" class="inputSpace" disabled required/></div>
+      <input class="formBtn" type="button" value="Join Room" onclick="formInput()"/>
+      <input class="formBtn" type="button" value="Disconnect" onclick="stopUsingFirebase()"/>
+   </form>
+    </div>
+    <div class="overlay"></div>
+  </div>
+</div>
+
+<div id="mch_popup">
+  <div class="container">
+    <div class="close" aria-label"Close Popup"></div>
+    <div class="content">
+      <div class="popup_body">
+        <img src="./img/tutorial_dtkeyboard.png" class="tutorial" alt="tutorial" id="tutorial">
+        <p class="form_text">VIEW OUR REPOSITORY <a HREF="http://www.google.com">HERE</a></p>
+       </div>
+    </div>
+    <div class="overlay"></div>
+  </div>
+</div>
+
+<script  src="js/effects.js"></script>
+<script  src="js/midiKeyboard.js"></script>
+<script  src="js/tracks.js"></script>
+<script  src="js/index.js"></script>
+<script  src="js/metronome.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>DT Keyboard - Mobile</title>
+  <link rel="icon" href="./img/logo.png">
+  <link rel="stylesheet" href="css/mobile-style.css">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+  <meta name="theme-color" content="#151515">
+  <meta name="msapplication-navbutton-color" content="#151515">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#151515">
+</head>
+
+<body>
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCkcmlJEtKOrm3mtidLNOiiMtruCFDUo8k",
+    authDomain: "dt-keyboard-d178c.firebaseapp.com",
+    databaseURL: "https://dt-keyboard-d178c.firebaseio.com",
+    projectId: "dt-keyboard-d178c",
+    storageBucket: "dt-keyboard-d178c.appspot.com",
+    messagingSenderId: "650064927425"
+  };
+  firebase.initializeApp(config);
+  </script>
+
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/dseg14" type="text/css"/>
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/datalegreyadot" type="text/css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300">
+
+  <script src='https://surikov.github.io/webaudiofont/npm/dist/WebAudioFontPlayer.js'></script>
+  <script src='https://surikov.github.io/webaudiofontdata/sound/0000_Chaos_sf2_file.js'></script>
+  <script src='https://surikov.github.io/webaudiofontdata/sound/0180_Aspirin_sf2_file.js'></script>
+  <script src='https://surikov.github.io/webaudiofontdata/sound/0240_Aspirin_sf2_file.js'></script>
+  <script src='https://surikov.github.io/webaudiofontdata/sound/0400_Aspirin_sf2_file.js'></script>
+  
+<nav role="navigation">
+  <div id="menuToggle" style="display: inline-flex;">
+  <div class="text" onclick="openPopupRoom()">
+    <img src="./img/logo_mobile.png" alt="logo" id="logo"></div></div>
+</nav>
+
+<div id="mch_popup">
+  <div class="container">
+    <div class="content">
+      <div class="popup_body">
+        <img src="./img/tutorial_dtkeyboard_mobile.png" class="tutorial" alt="tutorial" id="tutorial">
+        <p class="form_text"></p>
+       </div>
+    </div>
+    <div class="overlay"></div>
+  </div>
+</div>
+
+<div id="roomForm">
+  <div class="container">
+    <div class="content">
+      <div class="popup_body">
+
+    <div class="popup-text" style="font-size: 10vh; font-weight: 100px; margin-top: 15vh">Let's have a jam session!</div>
+    <div class="popup-text" style="font-size: 5vh;">Select a room<br>or create your own one</div>
+    <div class="popup-text" style="font-size: 4vh">Select Room:</div>
+
+    <div class="custom-select-room dropdown-menu"> 
+      <select id="roomList" onchange="selectRoom()" class="select dropdown-menu"></select>
+    </div> <!--menu a tendina---> 
+
+    <form action="#">
+      
+      <input id="roomPassword" placeholder="Room Password" type="text" 
+        value="No password required!!" class="inputSpace" disabled required/></div>
+      <input class="formBtn" type="button" value="Join Room" onclick="formInput()"/>
+      <br>
+      <input class="formBtn" type="button" value="Close Window" onclick="closePopupRoom()"/>
+      
+    </form>
+
+    </div>
+    <div class="overlay"></div>
+  </div>
+</div>
+</div>
+
+<div>
+      <div id="tonality"></div>
+      <div id="tonalities-table">
+        <div class="tonalities-container" style="border-bottom-left-radius: 15px;">
+          <div id="A♭+" class="tonalita A♭" tonality-row="0" tonality-col="0">A♭+</div>
+          <div id="E♭+" class="tonalita E♭+" tonality-row="0" tonality-col="1">E♭+</div>
+          <div id="B♭+" class="tonalita B♭+" tonality-row="0" tonality-col="2">B♭+</div>
+          <div id="F+" class="tonalita F+" tonality-row="0" tonality-col="3">F+</div>
+          <div id="C+" class="tonalita C+" tonality-row="0" tonality-col="4">C+</div>
+          <div id="G+" class="tonalita G+" tonality-row="0" tonality-col="5">G+</div>
+          <div id="D+" class="tonalita D+" tonality-row="0" tonality-col="6">D+</div>
+          <div id="A+" class="tonalita A+" tonality-row="0" tonality-col="7">A+</div>
+          <div id="E+" class="tonalita E+" tonality-row="0" tonality-col="8" style="border-bottom-left-radius: 15px;">E+</div>
+        </div>
+        <div class="tonalities-container" style="border-bottom-right-radius: 15px;">
+          <div id="F-" class="tonalita F-" tonality-row="1" tonality-col="0">F-</div>
+          <div id="C-" class="tonalita C-" tonality-row="1" tonality-col="1">C-</div>
+          <div id="G-" class="tonalita G-" tonality-row="1" tonality-col="2">G-</div>
+          <div id="D-" class="tonalita D-" tonality-row="1" tonality-col="3">D-</div>
+          <div id="A-" class="tonalita A-" tonality-row="1" tonality-col="4">A-</div>
+          <div id="E-" class="tonalita E-" tonality-row="1" tonality-col="5">E-</div>
+          <div id="B-" class="tonalita B-" tonality-row="1" tonality-col="6">B-</div>
+          <div id="F#-" class="tonalita F#-" tonality-row="1" tonality-col="7">F#-</div>
+          <div id="C#-" class="tonalita C#-" tonality-row="1" tonality-col="8" style="border-bottom-right-radius: 15px;">C#-</div>
+        </div>
+      </div> 
+
+<div style="display: inline-flex; margin-left: 5vw;"><div style="max-width: 50vw">
+<div class="room-text">ROOM</div>
+<div id="room-number">0</div>
+</div>
+<div>
+<div class="master">MASTER VOLUME</div>
+<div id="equalizer">
+  <section></section>
+    <section id="section">
+      <input id="masterVolumeRange" class="range" type='range' range-number ="2" min='0' value='0.5' max='1' step='.05' />
+</section></div></div></div>
+
+</div>
+
+<script  src="js/mobile-index.js"></script>
+</body>
+
+</html>
