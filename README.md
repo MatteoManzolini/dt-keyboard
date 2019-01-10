@@ -2,7 +2,9 @@
 
 **Version 1.0.0**
 
-See [AUTHORS](##authors) and [COPYRIGHT](##copyright) section for Copyright information.
+Demonstration video: https://drive.google.com/open?id=1ZyDayk5WOfHuUH_SrvZERUocpx5qfbta
+
+Surge link: [DTKeyboard v1.0.0](https://dt-keyboard.surge.sh/)
 
 ## Welcome to DTKeyboard!
 
@@ -26,7 +28,7 @@ It is possible to use the up and down arrow to switch between three different oc
 #### Dynamic Tonality change and scale selection
 
 By pressing the left and right arrow, it is possible to change between close tonalities, by jumps of fifth, and by pressing the ```shift``` button it is possible to change between a major or minor tonality. The current tonality and the other ones are highlighted on a display, which also can be clicked to switch to the desired tonality.
-It is also possible to change the scale, by using the menù located just beneath the table of tonalities, to switch to any desired modal scale, variant of the minor one and others.
+It is also possible to change the scale, by using the menÃ¹ located just beneath the table of tonalities, to switch to any desired modal scale, variant of the minor one and others.
 	
 #### MIDI sounds, instrument and effects
 
@@ -47,7 +49,7 @@ When one or multiple notes are being played, the tonality table verifies them an
 
 DTKeyboard supports the connection of a MIDI controller, which can be player with all the features of the computer-based keyboard. It has the possibility to switch on and off the Dynamic Tonality function and has a special scale-function which, if enbaled, allows to play exclusively the notes belonging to the selected tonality and scale, approximating the others to the right ones.
 
-### Improvisation helper and play-along
+### Improvisation helper with metronome and play-along
 
 DTKeyboard comes with an audio player with a few base-tracks, that allows the player to freely improvise with minimum effort or music knowledge, as the tonality is dynamically changed based on the song which is being played.
 
@@ -59,7 +61,7 @@ Using [Firebase](https://firebase.google.com/), it is possible to play along wit
 
 - Matteo Manzolini <matteo.manzolini@mail.polimi.it> 
 - Alessandro Montali <alessandro.montali@mail.polimi.it>
-- Davide Salvi <davide.salvi@mail.polimi.it>
+- Davide Salvi <davide1.salvi@mail.polimi.it>
 
 ## Copyright
-Copyright © 2018 by Matteo Manzolini, Alessandro Montali, Davide Salvi, Master's Student in Music and Acoustics Engineering c/o Politecnico di Milano
+Copyright Â© 2018 by Matteo Manzolini, Alessandro Montali, Davide Salvi, Master's Student in Music and Acoustics Engineering c/o Politecnico di Milano
