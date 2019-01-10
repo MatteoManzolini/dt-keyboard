@@ -2,7 +2,9 @@
 
 **Version 1.0.0**
 
-See [AUTHORS](##authors) and [COPYRIGHT](##copyright) section for Copyright information.
+Demonstration video: https://drive.google.com/open?id=1ZyDayk5WOfHuUH_SrvZERUocpx5qfbta
+
+Surge link: [DTKeyboard v1.0.0](https://dt-keyboard.surge.sh/)
 
 ## Welcome to DTKeyboard!
 
@@ -60,7 +62,7 @@ DTKeyboard supports also the connection of a mobile controller, so a person can 
 
 - Matteo Manzolini <matteo.manzolini@mail.polimi.it> 
 - Alessandro Montali <alessandro.montali@mail.polimi.it>
-- Davide Salvi <davide.salvi@mail.polimi.it>
+- Davide Salvi <davide1.salvi@mail.polimi.it>
 
 ## Copyright
 Copyright © 2018 by Matteo Manzolini, Alessandro Montali, Davide Salvi, Master's Students in Music and Acoustics Engineering c/o Politecnico di Milano
