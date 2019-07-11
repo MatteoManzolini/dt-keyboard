@@ -57,6 +57,11 @@ tonalities = [
   ['F-', 'C-', 'G-', 'D-', 'A-', 'E-', 'B-', 'F#-', 'C#-', 'G#-', 'D#-', 'A#-']
 ]
 
+tonalities_nosign = [
+  ['A♭','E♭', 'B♭', 'F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#'],
+  ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'A#']
+]
+
 frequencies = [ 
   [56, 63, 58, 53, 60, 55, 62, 57, 64, 59, 54, 61], //MIDI
   [53, 60, 55, 62, 57, 64, 59, 54, 61, 56, 63, 58]
@@ -74,6 +79,34 @@ keys = "asdfghjk";
 document.getElementById("minorScales").setAttribute("disabled","");
 document.getElementById("tonality").innerHTML = tonalities[m][t];
 document.getElementById(tonalities[m][t]).classList.add("tonalita-attiva")
+
+var sign_flag = [1,1];
+
+document.getElementById("A♭+").innerHTML = tonalities[0][0];
+document.getElementById("E♭+").innerHTML = tonalities[0][1];
+document.getElementById("B♭+").innerHTML = tonalities[0][2];
+document.getElementById("F+").innerHTML = tonalities[0][3];
+document.getElementById("C+").innerHTML = tonalities[0][4];
+document.getElementById("G+").innerHTML = tonalities[0][5];
+document.getElementById("D+").innerHTML = tonalities[0][6];
+document.getElementById("A+").innerHTML = tonalities[0][7];
+document.getElementById("E+").innerHTML = tonalities[0][8];
+document.getElementById("B+").innerHTML = tonalities[0][9];
+document.getElementById("F#+").innerHTML = tonalities[0][10];
+document.getElementById("C#+").innerHTML = tonalities[0][11];
+
+document.getElementById("F-").innerHTML = tonalities[1][0];
+document.getElementById("C-").innerHTML = tonalities[1][1];
+document.getElementById("G-").innerHTML = tonalities[1][2];
+document.getElementById("D-").innerHTML = tonalities[1][2];
+document.getElementById("A-").innerHTML = tonalities[1][4];
+document.getElementById("E-").innerHTML = tonalities[1][5];
+document.getElementById("B-").innerHTML = tonalities[1][6];
+document.getElementById("F#-").innerHTML = tonalities[1][7];
+document.getElementById("C#-").innerHTML = tonalities[1][8];
+document.getElementById("G#-").innerHTML = tonalities[1][9];
+document.getElementById("D#-").innerHTML = tonalities[1][10];
+document.getElementById("A#-").innerHTML = tonalities[1][11];
 
 DynKeyboard = 0;
 ScaleKeyboard = 0;
@@ -128,7 +161,8 @@ function stateValueM(data) {
     document.getElementById("modalScales").setAttribute("disabled","");
     document.getElementById("minorScales").removeAttribute("disabled");
   }
-  document.getElementById("tonality").innerHTML = tonalities[m][t];
+  if(sign_flag[m]==1){document.getElementById("tonality").innerHTML = tonalities[m][t];}
+  else{document.getElementById("tonality").innerHTML = tonalities_nosign[m][t];}
   document.getElementById(tonalities[m][t]).classList.add("tonalita-attiva")
 
   for(var i=0; i<8; i++) {
@@ -147,7 +181,8 @@ function stateValueM(data) {
 function stateValueT(data) {
   document.getElementById(tonalities[m][t]).classList.remove("tonalita-attiva")
   t = data.val();
-  document.getElementById("tonality").innerHTML = tonalities[m][t]
+  if(sign_flag[m]==1){document.getElementById("tonality").innerHTML = tonalities[m][t];}
+  else{document.getElementById("tonality").innerHTML = tonalities_nosign[m][t];}
   document.getElementById(tonalities[m][t]).classList.add("tonalita-attiva")
 
   for(var i=0; i<8; i++) {
@@ -371,8 +406,10 @@ document.onkeydown = function(event) {
     tones[i] = tones[i] = modes[m][i]+frequencies[m][t]+oct
   }
   
-  document.getElementById("tonality").innerHTML = tonalities[m][t];
+  if(sign_flag[m]==1){document.getElementById("tonality").innerHTML = tonalities[m][t];}
+  else{document.getElementById("tonality").innerHTML = tonalities_nosign[m][t];}
   toggleScale();
+  toggleSignFlag();
 }
 
 //If a note is repeated playing, using Firebase
@@ -684,7 +721,8 @@ function clickOnTonality(data) {
   }
   
   document.getElementById(tonalities[m][t]).classList.add("tonalita-attiva")
-  document.getElementById("tonality").innerHTML = tonalities[m][t];
+  if(sign_flag[m]==1){document.getElementById("tonality").innerHTML = tonalities[m][t];}
+  else{document.getElementById("tonality").innerHTML = tonalities_nosign[m][t];}
 
   for(i=0;i<8;i++){
     playSound(tones[i], 0, selectedPreset);    
@@ -701,7 +739,8 @@ function clickOnTonality(data) {
     tones[i] = tones[i] = modes[m][i]+frequencies[m][t]+oct
   }
   
-  document.getElementById("tonality").innerHTML = tonalities[m][t];
+  if(sign_flag[m]==1){document.getElementById("tonality").innerHTML = tonalities[m][t];}
+  else{document.getElementById("tonality").innerHTML = tonalities_nosign[m][t];}
   toggleScale();
 }
 
@@ -852,7 +891,8 @@ playButton.addEventListener("click", function () {
         for(var j=0; j<8; j++) {
           tones[j] = tones[j] = modes[m][j]+frequencies[m][t]+oct;
         }
-        document.getElementById("tonality").innerHTML = tonalities[m][t];
+        if(sign_flag[m]==1){document.getElementById("tonality").innerHTML = tonalities[m][t];}
+        else{document.getElementById("tonality").innerHTML = tonalities_nosign[m][t];}
         toggleScale();
       }
     }
@@ -1177,19 +1217,87 @@ function setRoomNumber(){
 
 ////MODAL SCALES
 
+function toggleSignFlag(){
+  if(sign_flag[m] == 1) {
+
+document.getElementById("A♭+").innerHTML = tonalities[0][0];
+document.getElementById("E♭+").innerHTML = tonalities[0][1];
+document.getElementById("B♭+").innerHTML = tonalities[0][2];
+document.getElementById("F+").innerHTML = tonalities[0][3];
+document.getElementById("C+").innerHTML = tonalities[0][4];
+document.getElementById("G+").innerHTML = tonalities[0][5];
+document.getElementById("D+").innerHTML = tonalities[0][6];
+document.getElementById("A+").innerHTML = tonalities[0][7];
+document.getElementById("E+").innerHTML = tonalities[0][8];
+document.getElementById("B+").innerHTML = tonalities[0][9];
+document.getElementById("F#+").innerHTML = tonalities[0][10];
+document.getElementById("C#+").innerHTML = tonalities[0][11];
+
+document.getElementById("F-").innerHTML = tonalities[1][0];
+document.getElementById("C-").innerHTML = tonalities[1][1];
+document.getElementById("G-").innerHTML = tonalities[1][2];
+document.getElementById("D-").innerHTML = tonalities[1][3];
+document.getElementById("A-").innerHTML = tonalities[1][4];
+document.getElementById("E-").innerHTML = tonalities[1][5];
+document.getElementById("B-").innerHTML = tonalities[1][6];
+document.getElementById("F#-").innerHTML = tonalities[1][7];
+document.getElementById("C#-").innerHTML = tonalities[1][8];
+document.getElementById("G#-").innerHTML = tonalities[1][9];
+document.getElementById("D#-").innerHTML = tonalities[1][10];
+document.getElementById("A#-").innerHTML = tonalities[1][11];
+
+}  else {
+
+document.getElementById("A♭+").innerHTML = tonalities_nosign[0][0];
+document.getElementById("E♭+").innerHTML = tonalities_nosign[0][1];
+document.getElementById("B♭+").innerHTML = tonalities_nosign[0][2];
+document.getElementById("F+").innerHTML = tonalities_nosign[0][3];
+document.getElementById("C+").innerHTML = tonalities_nosign[0][4];
+document.getElementById("G+").innerHTML = tonalities_nosign[0][5];
+document.getElementById("D+").innerHTML = tonalities_nosign[0][6];
+document.getElementById("A+").innerHTML = tonalities_nosign[0][7];
+document.getElementById("E+").innerHTML = tonalities_nosign[0][8];
+document.getElementById("B+").innerHTML = tonalities_nosign[0][9];
+document.getElementById("F#+").innerHTML = tonalities_nosign[0][10];
+document.getElementById("C#+").innerHTML = tonalities_nosign[0][11];
+
+document.getElementById("F-").innerHTML = tonalities_nosign[1][0];
+document.getElementById("C-").innerHTML = tonalities_nosign[1][1];
+document.getElementById("G-").innerHTML = tonalities_nosign[1][2];
+document.getElementById("D-").innerHTML = tonalities_nosign[1][3];
+document.getElementById("A-").innerHTML = tonalities_nosign[1][4];
+document.getElementById("E-").innerHTML = tonalities_nosign[1][5];
+document.getElementById("B-").innerHTML = tonalities_nosign[1][6];
+document.getElementById("F#-").innerHTML = tonalities_nosign[1][7];
+document.getElementById("C#-").innerHTML = tonalities_nosign[1][8];
+document.getElementById("G#-").innerHTML = tonalities_nosign[1][9];
+document.getElementById("D#-").innerHTML = tonalities_nosign[1][10];
+document.getElementById("A#-").innerHTML = tonalities_nosign[1][11];
+
+}}
+
 //Changes the scale
 function changeModalScale(){
   var mode = document.getElementById("modalScales").value; 
   if(m===0){
-    if(mode==="Ionian")     modes[0]=[0, 2, 4, 5, 7, 9, 11, 12];
-    if(mode==="Dorian")     modes[0]=[0, 2, 3, 5, 7, 9, 10, 12];
-    if(mode==="Phrygian")   modes[0]=[0, 1, 3, 5, 7, 8, 10, 12];
-    if(mode==="Lydian")     modes[0]=[0, 2, 4, 6, 7, 9, 11, 12];
-    if(mode==="Mixolydian") modes[0]=[0, 2, 4, 5, 7, 9, 10, 12];
-    if(mode==="Aeolian")    modes[0]=[0, 2, 3, 5, 7, 8, 10, 12];
-    if(mode==="Locrian")    modes[0]=[0, 1, 3, 5, 6, 8, 10, 12];
-    if(mode==="Blues")      modes[0]=[0, 3, 5, 6, 7, 10, 12, 15];
-    if(mode==="Pentatonic") modes[0]=[0, 2, 4, 7, 9, 12, 14, 16];
+    if(mode==="Ionian")     {modes[0]=[0, 2, 4, 5, 7, 9, 11, 12];
+                            sign_flag[m] = 1;}
+    if(mode==="Dorian")     {modes[0]=[0, 2, 3, 5, 7, 9, 10, 12];
+                            sign_flag[m] = 0;}
+    if(mode==="Phrygian")   {modes[0]=[0, 1, 3, 5, 7, 8, 10, 12];
+                            sign_flag[m] = 0;}
+    if(mode==="Lydian")     {modes[0]=[0, 2, 4, 6, 7, 9, 11, 12];
+                            sign_flag[m] = 0;}
+    if(mode==="Mixolydian") {modes[0]=[0, 2, 4, 5, 7, 9, 10, 12];
+                            sign_flag[m] = 0;}
+    if(mode==="Aeolian")    {modes[0]=[0, 2, 3, 5, 7, 8, 10, 12];
+                            sign_flag[m] = 0;}
+    if(mode==="Locrian")    {modes[0]=[0, 1, 3, 5, 6, 8, 10, 12];
+                            sign_flag[m] = 0;}
+    if(mode==="Blues")      {modes[0]=[0, 3, 5, 6, 7, 10, 12, 15];
+                            sign_flag[m] = 0;}
+    if(mode==="Pentatonic") {modes[0]=[0, 2, 4, 7, 9, 12, 14, 16];
+                            sign_flag[m] = 0;}
   } else {
     alert("You are in a minor tonality!")
   }
@@ -1197,16 +1305,24 @@ function changeModalScale(){
     tones[i] = tones[i] = modes[m][i]+frequencies[m][t]+oct;
   }
   toggleScale();
+  toggleSignFlag();
+  if(sign_flag[m]==1){document.getElementById("tonality").innerHTML = tonalities[m][t];}
+  else{document.getElementById("tonality").innerHTML = tonalities_nosign[m][t];}
 }
 
 function changeMinorScale(){
   var minor = document.getElementById("minorScales").value;
   if(m===1){
-    if(minor==="Natural")    modes[1]=[0, 2, 3, 5, 7, 8, 10, 12];
-    if(minor==="Harmonic")   modes[1]=[0, 2, 3, 5, 7, 8, 11, 12];
-    if(minor==="Melodic")    modes[1]=[0, 2, 3, 5, 7, 9, 11, 12];
-    if(minor==="Blues")      modes[1]=[0, 3, 5, 6, 7, 10, 12, 15];
-    if(minor==="Pentatonic") modes[1]=[0, 3, 5, 7, 10, 12, 15, 17];
+    if(minor==="Natural")    {modes[1]=[0, 2, 3, 5, 7, 8, 10, 12];
+                            sign_flag[m] = 1;}
+    if(minor==="Harmonic")   {modes[1]=[0, 2, 3, 5, 7, 8, 11, 12];
+                            sign_flag[m] = 1;}
+    if(minor==="Melodic")    {modes[1]=[0, 2, 3, 5, 7, 9, 11, 12];
+                            sign_flag[m] = 1;}
+    if(minor==="Blues")      {modes[1]=[0, 3, 5, 6, 7, 10, 12, 15];
+                            sign_flag[m] = 0;}
+    if(minor==="Pentatonic") {modes[1]=[0, 3, 5, 7, 10, 12, 15, 17];
+                            sign_flag[m] = 0;}
   } else {
     alert("You are in a major tonality!")
   }  
@@ -1214,6 +1330,9 @@ function changeMinorScale(){
     tones[i] = tones[i] = modes[m][i]+frequencies[m][t]+oct;
   }
   toggleScale();
+  toggleSignFlag();
+  if(sign_flag[m]==1){document.getElementById("tonality").innerHTML = tonalities[m][t];}
+  else{document.getElementById("tonality").innerHTML = tonalities_nosign[m][t];}
 }
 
 /////CURRENT SCALE HIGHLIGHT
