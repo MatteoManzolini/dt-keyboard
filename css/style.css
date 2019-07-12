@@ -508,6 +508,34 @@ input[type='range']:focus {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+#instrumentTitle {
+  width: 15px;
+  height: 13px;
+  transform: translate(20px,2px);
+  font-weight: bold;
+  font-size:80%;
+  color: rgba(190, 184, 184, 0.623);
+}
+
+#modalScaleTitle {
+  width: 0px;
+  height: 13px;
+  transform: translate(27px,-15px);
+  font-weight: bold;
+  font-size:80%;
+  color: rgba(190, 184, 184, 0.623);
+}
+
+#minorScaleTitle {
+  width: 0px;
+  height: 13px;
+  transform: translate(27px,-15px);
+  font-weight: bold;
+  font-size:80%;
+  color: rgba(190, 184, 184, 0.623);
+}
+
+
 /* MIDI LED */
 
 #midibox {

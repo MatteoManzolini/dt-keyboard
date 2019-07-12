@@ -127,6 +127,7 @@ var releaseDB;
 var timesDB;
 var playingNote;
 var releasingNote;
+var usingModes = 0;
 
 //Connects local values with the room ones
 function initializeFirebase(){
@@ -382,6 +383,17 @@ document.onkeydown = function(event) {
       document.getElementById("modalScales").setAttribute("disabled","");
       document.getElementById("minorScales").removeAttribute("disabled");
     }
+    if(usingModes===0){
+      if(m===0){
+        document.querySelector(".custom-select-minor-trigger").textContent = "Major";
+        modes[0]=[0, 2, 4, 5, 7, 9, 11, 12];
+        sign_flag[m] = 1;
+      } else {
+        document.querySelector(".custom-select-minor-trigger").textContent = "Natural";
+        modes[1]=[0, 2, 3, 5, 7, 8, 10, 12];
+        sign_flag[m] = 1;
+      }
+    } else sign_flag[m] = 0;
     if (usingFirebase){
       mDB.set(m);
       mDB.on('value', stateValueM);
@@ -712,6 +724,18 @@ function clickOnTonality(data) {
     document.getElementById("modalScales").setAttribute("disabled","");
     document.getElementById("minorScales").removeAttribute("disabled");
   }
+  if(usingModes===0){
+   if(m===0){
+    document.querySelector(".custom-select-minor-trigger").textContent = "Major";
+    modes[0]=[0, 2, 4, 5, 7, 9, 11, 12];
+    sign_flag[m] = 1;
+   } else {
+    document.querySelector(".custom-select-minor-trigger").textContent = "Natural";
+    modes[1]=[0, 2, 3, 5, 7, 8, 10, 12];
+    sign_flag[m] = 1;
+   }
+  } else sign_flag[m] = 0;
+  
   
   if(usingFirebase){                          //if using Firebase
     tDB.set(t);
@@ -1276,30 +1300,38 @@ document.getElementById("A#-").innerHTML = tonalities_nosign[1][11];
 
 }}
 
+
+
 //Changes the scale
 function changeModalScale(){
   var mode = document.getElementById("modalScales").value; 
-  if(m===0){
-    if(mode==="Ionian")     {modes[0]=[0, 2, 4, 5, 7, 9, 11, 12];
-                            sign_flag[m] = 1;}
-    if(mode==="Dorian")     {modes[0]=[0, 2, 3, 5, 7, 9, 10, 12];
+    if(mode==="Ionian")     {modes[0]=[0, 2, 4, 5, 7, 9, 11, 12];modes[1]=[0, 2, 4, 5, 7, 9, 11, 12];
                             sign_flag[m] = 0;}
-    if(mode==="Phrygian")   {modes[0]=[0, 1, 3, 5, 7, 8, 10, 12];
+    if(mode==="Dorian")     {modes[0]=[0, 2, 3, 5, 7, 9, 10, 12];modes[1]=[0, 2, 3, 5, 7, 9, 10, 12];
                             sign_flag[m] = 0;}
-    if(mode==="Lydian")     {modes[0]=[0, 2, 4, 6, 7, 9, 11, 12];
+    if(mode==="Phrygian")   {modes[0]=[0, 1, 3, 5, 7, 8, 10, 12];modes[1]=[0, 1, 3, 5, 7, 8, 10, 12];
                             sign_flag[m] = 0;}
-    if(mode==="Mixolydian") {modes[0]=[0, 2, 4, 5, 7, 9, 10, 12];
+    if(mode==="Lydian")     {modes[0]=[0, 2, 4, 6, 7, 9, 11, 12];modes[1]=[0, 2, 4, 6, 7, 9, 11, 12];
                             sign_flag[m] = 0;}
-    if(mode==="Aeolian")    {modes[0]=[0, 2, 3, 5, 7, 8, 10, 12];
+    if(mode==="Mixolydian") {modes[0]=[0, 2, 4, 5, 7, 9, 10, 12];modes[1]=[0, 2, 4, 5, 7, 9, 10, 12];
                             sign_flag[m] = 0;}
-    if(mode==="Locrian")    {modes[0]=[0, 1, 3, 5, 6, 8, 10, 12];
+    if(mode==="Aeolian")    {modes[0]=[0, 2, 3, 5, 7, 8, 10, 12];modes[1]=[0, 2, 3, 5, 7, 8, 10, 12];
                             sign_flag[m] = 0;}
-    if(mode==="Blues")      {modes[0]=[0, 3, 5, 6, 7, 10, 12, 15];
+    if(mode==="Locrian")    {modes[0]=[0, 1, 3, 5, 6, 8, 10, 12];modes[1]=[0, 1, 3, 5, 6, 8, 10, 12];
                             sign_flag[m] = 0;}
-    if(mode==="Pentatonic") {modes[0]=[0, 2, 4, 7, 9, 12, 14, 16];
-                            sign_flag[m] = 0;}
-  } else {
-    alert("You are in a minor tonality!")
+  document.querySelector(".custom-select-minor-trigger").textContent = "---";
+  usingModes=1;
+  if(mode==="---"){
+    usingModes=0;
+    if(m===0){
+      document.querySelector(".custom-select-minor-trigger").textContent = "Major";
+      modes[0]=[0, 2, 4, 5, 7, 9, 11, 12];
+      sign_flag[m] = 1;
+    } else {
+      document.querySelector(".custom-select-minor-trigger").textContent = "Natural";
+      modes[1]=[0, 2, 3, 5, 7, 8, 10, 12];
+      sign_flag[m] = 1;
+    }
   }
   for(var i=0; i<8; i++) {
     tones[i] = tones[i] = modes[m][i]+frequencies[m][t]+oct;
@@ -1312,6 +1344,8 @@ function changeModalScale(){
 
 function changeMinorScale(){
   var minor = document.getElementById("minorScales").value;
+  var mode = document.getElementById("modalScales").value;
+  if(mode!="---") {document.querySelector(".custom-select-minor-trigger").textContent = "---"; return;}
   if(m===1){
     if(minor==="Natural")    {modes[1]=[0, 2, 3, 5, 7, 8, 10, 12];
                             sign_flag[m] = 1;}
@@ -1320,11 +1354,29 @@ function changeMinorScale(){
     if(minor==="Melodic")    {modes[1]=[0, 2, 3, 5, 7, 9, 11, 12];
                             sign_flag[m] = 1;}
     if(minor==="Blues")      {modes[1]=[0, 3, 5, 6, 7, 10, 12, 15];
-                            sign_flag[m] = 0;}
+                            sign_flag[m] = 1;}
     if(minor==="Pentatonic") {modes[1]=[0, 3, 5, 7, 10, 12, 15, 17];
-                            sign_flag[m] = 0;}
-  } else {
-    alert("You are in a major tonality!")
+                            sign_flag[m] = 1;}
+    if(minor==="Major") {
+      alert("You are in a minor tonality!"); 
+      document.querySelector(".custom-select-minor-trigger").textContent = "Natural";
+      modes[1]=[0, 2, 3, 5, 7, 8, 10, 12];
+      sign_flag[m] = 1;
+    }  
+  } else if(m===0) {
+    if(minor==="Major") {modes[0]=[0, 2, 4, 5, 7, 9, 11, 12];
+      sign_flag[m] = 1;}
+    if(minor==="Blues")      {modes[0]=[0, 3, 5, 6, 7, 10, 12, 15];
+      sign_flag[m] = 1;}
+    if(minor==="Pentatonic") {modes[0]=[0, 2, 4, 7, 9, 12, 14, 16];
+      sign_flag[m] = 1;}
+    if(minor==="Natural" || minor==="Harmonic" || minor==="Melodic") {
+      alert("You are in a major tonality!"); 
+      document.querySelector(".custom-select-minor-trigger").textContent = "Major";
+      modes[0]=[0, 2, 4, 5, 7, 9, 11, 12];
+      sign_flag[m] = 1;
+    }  
+      
   }  
   for(var i=0; i<8; i++) {
     tones[i] = tones[i] = modes[m][i]+frequencies[m][t]+oct;
@@ -1424,23 +1476,20 @@ $(".custom-option:first-of-type").hover(function() {
   $(this).parents(".custom-options").removeClass("option-hover");
 });
 
-$(".custom-select-modal-trigger").on("click", function() {
-  if (m===0) {   
+$(".custom-select-modal-trigger").on("click", function() {  
   $('html').one('click',function() {
     $(".custom-select").removeClass("opened");
   });
   $(this).parents(".custom-select").toggleClass("opened");
   event.stopPropagation();
-} else {alert("You are in a minor tonality!")}
 });
 
-$(".custom-modal-option").on("click", function() {
-  if (m===0) {   
+$(".custom-modal-option").on("click", function() {  
   $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
   $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
   $(this).addClass("selection");
   $(this).parents(".custom-select").removeClass("opened");
-  $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());}
+  $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
 });
 
 ///////////////// MINOR CUSTOM SELECT
@@ -1469,24 +1518,27 @@ $(".custom-option:first-of-type").hover(function() {
   $(this).parents(".custom-options").removeClass("option-hover");
 });
 
-$(".custom-select-minor-trigger").on("click", function() {
-  if (m===1) {   
+$(".custom-select-minor-trigger").on("click", function() { 
   $('html').one('click',function() {
     $(".custom-select").removeClass("opened");
   });
   $(this).parents(".custom-select").toggleClass("opened");
   event.stopPropagation();
-} else {alert("You are in a major tonality!")}
+//else {alert("You are in a major tonality!")}
 });
 
-$(".custom-minor-option").on("click", function() {
-  if (m===1) {   
+$(".custom-minor-option").on("click", function() {  
   $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
   $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
   $(this).addClass("selection");
   $(this).parents(".custom-select").removeClass("opened");
-  $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());}
+  $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
 });
+
+document.querySelector(".custom-select-minor-trigger").textContent = "Major";
+document.querySelector(".custom-select-modal-trigger").textContent = "---";
+modes[0]=[0, 2, 4, 5, 7, 9, 11, 12];
+sign_flag[m] = 1;
 
 function toggleModScale(key) {key.onclick = changeModalScale}
 

@@ -91,6 +91,7 @@
         </div>  
       </div>
 
+      <div id="instrumentTitle">INSTRUMENT</div>       
       <div style="transform: translate(10px, 5px);">
       <div style="display: inline-flex;">
         <div class="custom-select custom-select-instr" placeholder="Piano"> 
@@ -103,8 +104,10 @@
           </select>
         </div> <!--menu a tendina--->  
 
+        <div id="modalScaleTitle">MODE</div>
         <div class="custom-select custom-select-modal" placeholder="Ionian">
           <select id="modalScales" class="modalScales" onchange="changeModalScale()">
+              <option class="modScale" value="---"> --- </option>
               <option class="modScale" id="Ionian" value="Ionian"> Ionian </option>
               <option class="modScale" value="Dorian"> Dorian </option>  
               <option class="modScale" value="Phrygian"> Phrygian </option>
@@ -112,13 +115,13 @@
               <option class="modScale" value="Mixolydian"> Mixolydian </option>
               <option class="modScale" value="Aeolian"> Aeolian </option>
               <option class="modScale" value="Locrian"> Locrian </option>
-              <option class="modScale" value="Blues"> Blues </option>
-              <option class="modScale" value="Pentatonic"> Pentatonic </option>
           </select>
         </div> <!--menu a tendina---> 
 
-        <div class="custom-select custom-select-minor" placeholder="Natural"> 
+        <div id="minorScaleTitle">SCALE</div>
+        <div class="custom-select custom-select-minor" placeholder="Major"> 
           <select id="minorScales" onchange="changeMinorScale()">
+              <option class="minScale" value="Major"> Major </option>
               <option class="minScale" value="Natural"> Natural </option>
               <option class="minScale" value="Harmonic"> Harmonic </option>  
               <option class="minScale" value="Melodic"> Melodic </option>

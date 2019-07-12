@@ -40,14 +40,14 @@ function selectTrack(){
     for(var i=0; i<8; i++) {
       tones[i] = tones[i] = modes[m][i]+frequencies[m][t]+oct;
     }
-    document.querySelector(".custom-select-modal-trigger").textContent = "Blues";
+    document.querySelector(".custom-select-minor-trigger").textContent = "Blues";
     var song = onions;
   }else if (currentSong===3){
     modes=[[0, 2, 4, 7, 9, 12, 14, 16],[0, 2, 3, 5, 7, 8, 10, 12]];
     for(var i=0; i<8; i++) {
       tones[i] = tones[i] = modes[m][i]+frequencies[m][t]+oct;
     }
-    document.querySelector(".custom-select-modal-trigger").textContent = "Pentatonic";
+    document.querySelector(".custom-select-minor-trigger").textContent = "Pentatonic";
     var song = joe;
   }else if (currentSong===4){
     modes = [[0, 2, 4, 5, 7, 9, 11, 12],[0, 2, 3, 5, 7, 8, 10, 12]];
