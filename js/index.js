@@ -883,6 +883,7 @@ playButton.addEventListener("click", function () {
         if (t>0) { 
           t = song[i].tonality;
           m = song[i].mode;
+          document.querySelector(".custom-select-minor-trigger").textContent = song[i].scale;
         }
 
         if(m===0) {
