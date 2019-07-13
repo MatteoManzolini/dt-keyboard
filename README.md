@@ -1,10 +1,10 @@
 # DTKeyboard - Dynamic Tonality Keyboard
 
-**Version 1.0.0**
+**Version 1.0.2**
 
 Demonstration video: https://drive.google.com/open?id=1ZyDayk5WOfHuUH_SrvZERUocpx5qfbta
 
-Surge link: [DTKeyboard v1.0.0](https://dt-keyboard.surge.sh/)
+Surge link: [DTKeyboard v1.0.2](https://dt-keyboard.surge.sh/)
 
 ## Welcome to DTKeyboard!
 
@@ -28,7 +28,7 @@ It is possible to use the up and down arrow to switch between three different oc
 #### Dynamic Tonality change and scale selection
 
 By pressing the left and right arrow, it is possible to change between close tonalities, by jumps of fifth, and by pressing the ```shift``` button it is possible to change between a major or minor tonality. In this way the player can easily move to the other tonalities in the table. The current tonality and the other ones are highlighted on a display, which also can be clicked to switch to the desired tonality.
-It is also possible to change the scale, by using the menù located just beneath the table of tonalities, to switch to any desired modal scale, variant of the minor one and others. Starting from a major tonality it is possible to change between the Ionian, Dorian, Phrygian, Lydian, Mixolydian, Aeolian, Locrian, Blues and Pentatonic scales. Starting from a minor tonality we can choose the Natural, Harmonic, Melodic, Blues and Pentatonic scales.
+It is also possible to change the scale or choose a mode, by using the menù located just beneath the table of tonalities. It is possible to choose the Ionian, Dorian, Phrygian, Lydian, Mixolydian, Aeolian, Locrian modes. Starting from a major tonality we can change between the Major, Blues and Pentatonic scales. Starting from a minor tonality we can change between the Natural, Harmonic, Melodic, Blues and Pentatonic scales.
 	
 #### MIDI sounds, instrument and effects
 
